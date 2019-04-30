@@ -44,6 +44,9 @@ This will create two files in `*.tgz` format. We now push these charts to a repo
 ## Defining the MCM application
 
 A multi-cluster application uses the Kubernetes SIG Application CRD community specification, but with additional automation of the deployment and life-cycle management of resources to individual clusters.
+For this tutorial, we are using an ICP cluster that is serving as our MCM hub cluster and is managing multiple other clusters.
+
+![blogPic0](./pics/blogPic0.png)
 
 
 #### Start with creating an application.yaml file

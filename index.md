@@ -50,7 +50,7 @@ For this tutorial, we are using an ICP cluster that is serving as our MCM hub cl
 
 
 #### Start with creating an application.yaml file
-In any editor, create a file called application.yaml. We are going to populate it with the 5 components that are required to define an application in MCM - Application, Deployable, PlacementPolicy, ApplicationRelationship and PlacementBinding. 
+In any editor, create a file called `application.yaml`. We are going to populate it with the 5 components that are required to define an application in MCM - `Application`, `Deployable`, `PlacementPolicy`, `ApplicationRelationship` and `PlacementBinding`. 
 
 We start with an empty template like the one shown below and start filling each section:
 
@@ -67,7 +67,7 @@ Now we populate each section of this application.yaml for our app.
 
 
 
-###Defining local chart repo
+### Defining local chart repo
 If the helm charts for the application are uploaded to the local repo, then we need to include a secion in the `application.yaml` to define this as follows
 
 ![blogPic22](./pics/blogPic22.png)
@@ -78,7 +78,9 @@ A Deployable resource deploys your Helm chart. Our app has two charts called `ms
 
 ![blogPic4](./pics/blogPic4.png)
 
-`Please note:` If the charts are in the local repo defined in the previous section, then the 
+`Please note:` If the charts are in the local repo defined in the previous section, then the `spec.deployer.chartURL` can be replaced to point to the local charts. For instance, if you want to use the `mmssearch` chart from the local charts repo, then the `deployable` resource will be defined as follows:
+ 
+ ![blogPic23](./pics/blogPic23.png)
 
 
 

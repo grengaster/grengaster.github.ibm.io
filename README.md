@@ -44,10 +44,13 @@ This will create two files in `*.tgz` format. We now push these charts to a repo
 ## Defining the MCM application
 
 A multi-cluster application uses the Kubernetes SIG Application CRD community specification, but with additional automation of the deployment and life-cycle management of resources to individual clusters.
+For this tutorial, we are using an ICP cluster that is serving as our MCM hub cluster and is managing multiple other clusters.
+
+![blogPic0](./pics/blogPic0.png)
 
 
 #### Start with creating an application.yaml file
-In any editor, create a file called application.yaml. We are going to populate it with the 5 components that are required to define an application in MCM - Application, Deployable, PlacementPolicy, ApplicationRelationship and PlacementBinding. 
+In any editor, create a file called `application.yaml`. We are going to populate it with the 5 components that are required to define an application in MCM - `Application`, `Deployable`, `PlacementPolicy`, `ApplicationRelationship` and `PlacementBinding`. 
 
 We start with an empty template like the one shown below and start filling each section:
 
@@ -64,7 +67,7 @@ Now we populate each section of this application.yaml for our app.
 
 
 
-###Defining local chart repo
+### Defining local chart repo
 If the helm charts for the application are uploaded to the local repo, then we need to include a secion in the `application.yaml` to define this as follows
 
 ![blogPic22](./pics/blogPic22.png)
@@ -75,7 +78,9 @@ A Deployable resource deploys your Helm chart. Our app has two charts called `ms
 
 ![blogPic4](./pics/blogPic4.png)
 
-`Please note:` If the charts are in the local repo defined in the previous section, then the 
+`Please note:` If the charts are in the local repo defined in the previous section, then the `spec.deployer.chartURL` can be replaced to point to the local charts. For instance, if you want to use the `mmssearch` chart from the local charts repo, then the `deployable` resource will be defined as follows:
+ 
+ ![blogPic23](./pics/blogPic23.png)
 
 
 
@@ -166,3 +171,4 @@ MCM uses Weavescope to display the topology of the application created.
 
 ## Conclusion
 So, in this tutorial, you saw how to create a simple `application.yaml` to create an MCM application and tell MCM where to get the helm charts from and where to deploy them. 
+

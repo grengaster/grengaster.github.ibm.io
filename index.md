@@ -10,10 +10,13 @@ Start with a sample application on github
     git clone https://github.com/ibm-cloud/jpetstore-kubernetes
     cd jpetstore-kubernetes
 
-This sample perstore application consists of three parts - a `modernpets` and an `mssearch` component and a database.We want to containerize this application so it can run on the cloud. 
+This sample perstore application consists of three parts - a `modernpets` and an `mssearch` component and a database. We want to containerize this application so it can run on the cloud. 
 
-To do this, we build a docker image for all components of this application and then push it to the container registry under your namespace. In our example, we are pushing it to our ICP image registry under the `default` namespace.
+To do this, we build a docker image for all components of this application and then push it to the container registry under your namespace. In our example, we are pushing it to our ICP image registry  under the `default` namespace. 
 
+    export REGISTRY=mycluster.icp:8500
+    export NAMESPACE=default
+    cd jpetstore
     docker build . -t $(REGISTRY)/$(NAMESPACE)/jpetstoreweb
     docker push $(REGISTRY)/$(NAMESPACE)/jpetstoreweb
 	cd jpetstore/db && docker build . -t $(REGISTRY)/$(NAMESPACE)/jpetstoredb

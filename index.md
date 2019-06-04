@@ -1,7 +1,15 @@
 # **How to create and deploy an application using IBM MultiCloud Manager**
 
 
-This blog will discuss the step-by-step process of creating an application and deploying it to multiple clouds using IBM MultiCloud Manager.
+This blog will discuss the step-by-step process of creating an application and deploying it to multiple clouds using IBM MultiCloud Manager (version 3.1.2).
+
+** Prerequisites: ** This tutorial will assume that you have the following Command Line tools installed and pointing to your ICP cluster where MCM Hub is installed:
+    docker
+    kubectl
+    helm
+    cloudctl
+
+If you need help installing these tools, please refer to the following link -> `https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/cli_guide.html`
 
 
 ## **Start with an existing application**
@@ -35,8 +43,8 @@ This will create two files in **`*.tgz`** format. We now push these charts to a 
 
 **`Please note:`** You can also upload these charts to the local helm repository so that they show up in the catalog under **`local-charts`**.
 
-    cd helm && helm install --name jpetstore ./modernpets
-	cd helm && helm install --name mmssearch ./mmssearch
+    cd helm && cloudctl catalog load-chart -a modernpets-0.1.5.tgz -r local-charts
+	cd helm && cloudctl catalog load-chart -a mmssearch-0.1.0.tgz -r local-charts
 
  ![blogPic1](./pics/blogPic1.png)
 

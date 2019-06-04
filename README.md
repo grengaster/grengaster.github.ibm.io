@@ -17,12 +17,12 @@ To do this, we build a docker image for all components of this application and t
     export REGISTRY=mycluster.icp:8500
     export NAMESPACE=default
     cd jpetstore
-    docker build . -t $(REGISTRY)/$(NAMESPACE)/jpetstoreweb
-    docker push $(REGISTRY)/$(NAMESPACE)/jpetstoreweb
-	cd jpetstore/db && docker build . -t $(REGISTRY)/$(NAMESPACE)/jpetstoredb
-	docker push $(REGISTRY)/$(NAMESPACE)/jpetstoredb
-    cd mmssearch && docker build . -t $(REGISTRY)/$(NAMESPACE)/mmssearch
-	docker push $(REGISTRY)/$(NAMESPACE)/mmssearch
+    docker build . -t $REGISTRY/$NAMESPACE/jpetstoreweb
+    docker push $REGISTRY/$NAMESPACE/jpetstoreweb
+	cd jpetstore/db && docker build . -t $REGISTRY/$NAMESPACE/jpetstoredb
+	docker push $REGISTRY/$NAMESPACE/jpetstoredb
+    cd mmssearch && docker build . -t $REGISTRY/$NAMESPACE/mmssearch
+	docker push $REGISTRY/$NAMESPACE/mmssearch
 
 
  Next, we need to create Helm charts for the components of this application:

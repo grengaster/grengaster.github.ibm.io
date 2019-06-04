@@ -3,14 +3,14 @@
 
 This blog will discuss the step-by-step process of creating an application and deploying it to multiple clouds using IBM MultiCloud Manager (version 3.1.2).
 
-**Pre-requisites:** This tutorial will assume that you have the following Command Line tools installed and pointing to your ICP cluster where MCM Hub is installed:
+**Prerequisites:** This tutorial will assume that you have the following Command Line tools installed and pointing to your ICP cluster where IBM Multicloud Manager Hub is installed:
     
     docker
     kubectl
     helm
     cloudctl
 
-If you need help installing these tools, please refer to the following link : [https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/cli_guide.html]
+If you need help installing these tools, please refer to the following link: [https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/cli_guide.html]
 
 
 ## **Start with an existing application**
@@ -53,16 +53,16 @@ This will create two files in **`*.tgz`** format. We now push these charts to a 
 
 
 
-## **Define the MCM application**
+## **Define the IBM Multicloud Manager application**
 
 A multi-cluster application uses the Kubernetes SIG Application CRD community specification, but with additional automation of the deployment and life-cycle management of resources to individual clusters.
-For this tutorial, we are using an ICP cluster that is serving as our MCM hub cluster and is managing multiple other clusters.
+For this tutorial, we are using an ICP cluster that is serving as our IBM Multicloud Manager hub cluster and is managing multiple other clusters.
 
 ![blogPic0](./pics/blogPic0.png)
 
 
 ### <span style="color:green">Start with creating an application.yaml file</span>
-In any editor, create a file called `application.yaml`. We are going to populate it with the 5 components that are required to define an application in MCM - **`Application`**, **`Deployable`**, **`PlacementPolicy`**, **`ApplicationRelationship`** and **`PlacementBinding`**. 
+In any editor, create a file called `application.yaml`. We are going to populate it with the 5 components that are required to define an application in IBM Multicloud Manager - **`Application`**, **`Deployable`**, **`PlacementPolicy`**, **`ApplicationRelationship`** and **`PlacementBinding`**. 
 
 We start with an empty template like the one shown below and start filling each section:
 
@@ -145,7 +145,7 @@ metadata:
 
 
 ### <span style="color:green">Define the section for Deployable</span> 
-A Deployable resource deploys your Helm chart. Our app has two charts called **`mssearch`** and **`modernpets`**. This will create two separate Deployable resources so that MCM can deploy these two helm charts, based on the location specified in the **`chartURL`** parameter.
+A Deployable resource deploys your Helm chart. Our app has two charts called **`mssearch`** and **`modernpets`**. This will create two separate Deployable resources so that IBM Multicloud Manager can deploy these two helm charts, based on the location specified in the **`chartURL`** parameter.
 
 
 ```yaml
@@ -212,7 +212,7 @@ spec:
 
 
 ### <span style="color:green">Define the PlacementPolicy</span> 
-**PlacementPolicy** defines the criteria that MCM uses to find cluster(s) to place or deploy workloads. We can also define how many replicas we want to deploy. For instance, in our simple example below, we want to deploy one instance of both the deployables to the **`public`** cluster, so we define the PlacementPolicy as below. We can edit this later if needed.
+**PlacementPolicy** defines the criteria that IBM Multicloud Manager uses to find cluster(s) to place or deploy workloads. We can also define how many replicas we want to deploy. For instance, in our simple example below, we want to deploy one instance of both the deployables to the **`public`** cluster, so we define the PlacementPolicy as below. We can edit this later if needed.
 
 ```yaml
 apiVersion: mcm.ibm.com/v1alpha1
@@ -337,8 +337,8 @@ subjects:
 Save this application.yaml file. 
 
 
-## **Create the application in MCM**
-We can create the application in MCM either via the CLI or using the UI. 
+## **Create the application in IBM Multicloud Manager**
+We can create the application in IBM Multicloud Manager either via the CLI or using the console. 
 
 Using CLI you simply have to do the following:
 
@@ -346,7 +346,7 @@ Using CLI you simply have to do the following:
     kubectl create -f application.yaml
 
 
-Using the UI, we go to Applications menu on the left hand main menu for MCM
+Using the console, we go to Applications menu on the left hand main menu for IBM Multicloud Manager
 
 ![blogPic7](./pics/blogPic7.png)
 
@@ -393,11 +393,11 @@ Hit `Submit` and you will see the changes take effect.
 
 As you can see, the `modernpets` deployable is now moved to the icp cluster. MCM uses other values, if specified in the yaml, like `resourceHint` or `compliance` to make a decision on which cluster to move the workload.
 
-MCM uses Weavescope to display the topology of the application created. 
+IBM Multicloud Manager uses Weavescope to display the topology of the application created. 
 
 ![blogPic20](./pics/blogPic20.png)
 
 
 ## **Conclusion**
-So, in this tutorial, you saw how to create a simple `application.yaml` to create an MCM application and tell MCM where to get the helm charts from and where to deploy them. 
+So, in this tutorial, you saw how to create a simple `application.yaml` to create an IBM Multicloud Manager application and tell IBM Multicloud Manager where to get the helm charts from and where to deploy them. 
 

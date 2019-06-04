@@ -3,7 +3,7 @@
 
 This blog will discuss the step-by-step process of creating an application and deploying it to multiple clouds using IBM MultiCloud Manager (version 3.1.2).
 
-** Prerequisites: ** This tutorial will assume that you have the following Command Line tools installed and pointing to your ICP cluster where MCM Hub is installed:
+**Prerequisites:** This tutorial will assume that you have the following Command Line tools installed and pointing to your ICP cluster where MCM Hub is installed:
     docker
     kubectl
     helm

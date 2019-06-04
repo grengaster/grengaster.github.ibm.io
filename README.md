@@ -10,7 +10,7 @@ This blog will discuss the step-by-step process of creating an application and d
     helm
     cloudctl
 
-If you need help installing these tools, please refer to the following l[link] : (https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/cli_guide.html)
+If you need help installing these tools, please refer to the following link : [https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/cli_guide.html]
 
 
 ## **Start with an existing application**
